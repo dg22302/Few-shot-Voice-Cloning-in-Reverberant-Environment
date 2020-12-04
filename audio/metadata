@@ -1,0 +1,23 @@
+Reverb Conversion
+#1 - delta=0%
+reverb 1: hrev_smoothvox_15%
+reverb 2: abbey_vocalplate_15%
+#2 - delta=20%
+reverb 1: abbey_vocalplate_5%
+reverb 2: chromavoxhall_25%
+#3 - delta=40%
+reverb 1: chromavoxhall_5%
+reverb 2: abbey_vocalplate_45%
+#4 - delta=60%
+reverb 1: hrev_smoothvox_5%
+reverb 2: chromavoxchamber_65%
+
+De-reverbertion
+gamma=10%: #1=hrev_smoothvox, #2=abbey_vocalplate
+gamma=20%: #3=chromavoxhall, #4=chromavoxchamber
+gamma=30%: #5=hrev_smoothvox, #6=chromavoxhall
+gamma=40%: #7=chromavoxchamber, #8=abbey_vocalplate
+gamma=50%: #9=abbey_vocalplate, #10=chromavoxchamber
+gamma=60%: #11=hrev_smoothvox, #12=chromavoxhall
+gamma=70%: #13=abbey_vocalplate, #14=chromavoxchamber
+

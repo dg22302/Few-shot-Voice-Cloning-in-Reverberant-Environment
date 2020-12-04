@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>MUSICAL REVERB CONVERSION OF VOCAL TRACKS USING DISJOINTING U-NET</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/agency.min.css" rel="stylesheet">
+    <link href="css/agency.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container">
+        <!--<a class="navbar-brand js-scroll-trigger" href="#page-top">DeepComplexUnet</a>-->
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <!-- Menu -->
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav text-uppercase ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#abstract">ABSTRACT</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#proposed">Proposed System</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#result-objective">Objective Evaluation Result</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#result-subjective">Subjective Evaluation Result</a>
+            </li> -->
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#samples">Audio Samples</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#reference">References</a>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="masthead">
+      <div class="container">
+        <div class="intro-text">
+          <!-- <div class="intro-lead-in">Disentangling Timbre and Singing Style</div> -->
+          <div class="intro-heading">Reverb Conversion</div>
+          <!-- <div class="intro-lead-in">OF MIXED VOCAL TRACKS USING AN END-TO-END CONVOLUTIONAL DEEP NEURAL NETWORK</div> -->
+          <!-- <div class="intro-lead-in">of Mixed Vocal Tracks Using an End-to-end Convolutional Deep Neural Network</div> -->
+          <div class="intro-lead-in">of Mixed Vocal Tracks Using</div>
+          <div class="intro-lead-in">an End-to-end Convolutional Deep Neural Network</div>
+        </div>
+      </div>
+    </header>
+    
+
+    <!-- Abstract -->
+    <section id="abstract">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">ABSTRACT</h2>
+            <p><div style="text-align:justify"> Reverb plays a critical role in music production, where it provides listeners with spatial realization, timbre, and texture of the music. Yet, it is challenging to reproduce the musical reverb of a reference music track even by skilled engineers. In response, we propose an end-to-end system capable of switching the musical reverb factor of two different mixed vocal tracks. This method enables us to apply the reverb of the reference track to the source track to which the effect is desired. Further, our model can perform de-reverberation when the reference track is used as a dry vocal source. The proposed model is trained in combination with an adversarial objective, which makes it possible to handle high-resolution audio samples. The perceptual evaluation confirmed that the proposed model can convert the reverb factor with the preferred rate of 64.79%. To the best of our knowledge, this is the first attempt to apply deep neural networks to converting music reverb of vocal tracks.</div></p>
+            <!-- <img src="img/idea.png" style="max-width: 80%; height: auto;" /> -->
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+    <!-- proposed method -->
+    <!--
+    <section class="bg-light" id="proposed">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">PROPOSED SYSTEM</h2>
+            <p><div style="text-align:justify"> We propose a multi-singer SVS system that can model timbre and singing styles independently. 
+                We designed the network with <a href="https://github.com/juheo/Adversarially-Trained-End-to-end-Korean-Singing-Voice-Synthesis-System">[1]</a> as the baseline and extended the existing model to the multi-singer model by adding 1) singer identity encoder and 2) timbre/singing style conditioning method. </div></p>
+            <img src="img/proposed.png" style="max-width: 100%; height: auto;" />
+          </div>
+        </div>
+      </div>
+    </section>
+    -->
+    
+
+
+    <!-- Result -->
+    <!--
+    <section id="result">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">Listening Test Result</h2>
+            <h3 class="section-subheading text-muted">Qualitative evaluation results of our proposed system. (9-point scale)</h3>
+            <table class="table table-bordered">
+              <tr style="font-size:120%">
+                <th></th>
+                <th scope="col">Pronunciation accuracy</th>
+                <th scope="col">Sound Quality</th>
+                <th scope="col">Naturalness</th>
+              </tr>
+              <tr>
+                <th scope="row" style="font-size:130%">Proposed (w/o cross-generation)</th>
+                <td>7.30 &plusmn; 1.44</td>
+                <td>5.06 &plusmn; 1.44</td>
+                <td>5.64 &plusmn; 2.01</td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-size:130%">Proposed (w/ cross-generation)</th>
+                <td>7.36 &plusmn; 1.39</td>
+                <td>5.19 &plusmn; 1.76</td>
+                <td>5.55 &plusmn; 2.02</td>
+              </tr>
+              <tr>
+                <th scope="row" style="font-size:130%">Ground truth</th>
+                <td>7.43 &plusmn; 1.50</td>
+                <td>6.40 &plusmn; 1.96</td>
+                <td>6.89 &plusmn; 1.89</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+    -->
+    
+
+    <!-- Samples -->
+    
+    <section class="bg-light" id="samples">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">Audio Samples</h2>
+            <br>
+            <div class="nav nav-pills justify-content-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              <a class="nav-link py-3 px-4 active" id="v-pills-2_5-tab" data-toggle="pill" href="#v-pills-2_5" role="tab" aria-controls="v-pills-2_5" aria-selected="true">Reverb Conversion</a>
+              <a class="nav-link py-3 px-4" id="v-pills-7_5-tab" data-toggle="pill" href="#v-pills-7_5" role="tab" aria-controls="v-pills-7_5" aria-selected="false">De-reverberation</a>
+              <a class="nav-link py-3 px-4" id="v-pills-12_5-tab" data-toggle="pill" href="#v-pills-12_5" role="tab" aria-controls="v-pills-12_5" aria-selected="false">Conversion with Mixed Pop Songs</a>
+            </div>
+            <div class="tab-content py-5" id="v-pills-tabContent">
+              <div class="tab-pane fade show active" id="v-pills-2_5" role="tabpanel" aria-labelledby="v-pills-2_5-tab">
+                <p><div style="text-align:justify"> Results <b>Reverb Conversion</b> from the proposed model. All samples were generated from our validation dataset.
+                  <br> Four reverb presets were used in the validation dataset, where the details are as follows.
+                  <style type="text/css">
+                    .tg  {border-collapse:collapse;border-spacing:0;}
+                    .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+                      overflow:hidden;padding:10px 5px;word-break:normal;}
+                    .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+                      font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+                    .tg .tg-lhti{font-style:italic;text-align:center;vertical-align:middle}
+                    .tg .tg-wa1i{font-weight:bold;text-align:center;vertical-align:middle}
+                    .tg .tg-93gd{font-style:italic;text-align:center;vertical-align:middle}
+                    .tg .tg-5frq{font-style:italic;text-align:center;vertical-align:top}
+                    </style>
+                    <table class="tg center">
+                    <thead>
+                      <tr>
+                        <th class="tg-wa1i">Preset</th>
+                        <th class="tg-wa1i">Plug-in</th>
+                        <th class="tg-wa1i">Compamy</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="tg-93gd">Smooth Vocal</td>
+                        <td class="tg-93gd">H-Reverb</td>
+                        <td class="tg-93gd">Waves</td>
+                      </tr>
+                      <tr>
+                        <td class="tg-lhti">Vocal Plate</td>
+                        <td class="tg-lhti">Abbey Road Plates</td>
+                        <td class="tg-lhti">Waves</td>
+                      </tr>
+                      <tr>
+                        <td class="tg-93gd">Vocal Hall</td>
+                        <td class="tg-93gd">ChromaVerb</td>
+                        <td class="tg-93gd">Logic Pro-X</td>
+                      </tr>
+                      <tr>
+                        <td class="tg-lhti">Vocal Chamber</td>
+                        <td class="tg-5frq">ChromaVerb</td>
+                        <td class="tg-5frq">Logic Pro-X</td>
+                      </tr>
+                    </tbody>
+                    </table>
+                  <br> The samples used in this section were also used in the listening test.
+                  <br> <p style="color:#93a1a1;"><i>Please use devices such as speakers, headphones, and earphones in a quiet environment to analyze the sound source. </i></p></div></p>
+                <style type="text/css">
+                  .center{  margin-left: auto;margin-right: auto;}
+                  .tg  {border-collapse:collapse;border-color:#93a1a1;border-spacing:0;}
+                  .tg td{background-color:#fdf6e3;border-color:#93a1a1;border-style:solid;border-width:1px;color:#002b36;
+                    font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+                  .tg th{background-color:#657b83;border-color:#93a1a1;border-style:solid;border-width:1px;color:#fdf6e3;
+                    font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+                  .tg .tg-tse4{border-color:inherit;color:#036400;font-style:italic;text-align:center;vertical-align:middle}
+                  .tg .tg-b406{background-color:#eee8d5;border-color:inherit;text-align:center;vertical-align:middle}
+                  .tg .tg-9wq8{border-color:inherit;text-align:center;vertical-align:middle}
+                  .tg .tg-akev{background-color:#eee8d5;border-color:inherit;font-style:italic;text-align:center;vertical-align:middle}
+                  .tg .tg-gpu6{background-color:#eee8d5;border-color:inherit;color:#036400;font-style:italic;text-align:center;vertical-align:middle}
+                  .tg .tg-2hic{border-color:inherit;color:#036400;font-style:italic;text-align:center;vertical-align:middle}
+                  .tg .tg-uzvj{border-color:inherit;font-size:18px;font-weight:bold;text-align:center;vertical-align:middle}
+                  .tg .tg-uzvh{border-color:inherit;font-weight:bold;text-align:center;vertical-align:middle}
+                  .tg .tg-z630{border-color:inherit;color:#00009b;font-style:italic;text-align:center;vertical-align:middle}
+                  .tg .tg-vrnj{border-color:inherit;font-style:italic;text-align:center;vertical-align:middle}
+                  .tg .tg-x6um{background-color:#eee8d5;border-color:inherit;color:#036400;font-style:italic;text-align:center;vertical-align:middle}
+                  .tg .tg-q5bq{background-color:#eee8d5;border-color:inherit;color:#00009b;font-style:italic;text-align:center;vertical-align:middle}
+                  .tg .tg-0r0q{background-color:#eee8d5;border-color:inherit;color:#00009B;font-style:italic;text-align:center;vertical-align:middle}
+                  .tg .tg-ezck{border-color:inherit;color:#00009B;font-style:italic;text-align:center;vertical-align:middle}
+                  </style>
+                  <table class="tg center">
+                  <thead>
+                    <tr>
+                      <th class="tg-9wq8" rowspan="2"><span style="font-weight:bold">No. / &Delta;&gamma;</span><br><span style="color:#00009B">Reverb 1 (r<sub>1</sub>) / &gamma;</span><br><span style="color:#036400">Reverb 2 (r<sub>2</sub>) / &gamma;</span></th>
+                      <th class="tg-uzvj" colspan="2">Model Input</th>
+                      <th class="tg-uzvj" colspan="2">Model Output</th>
+                      <th class="tg-uzvj" colspan="2">Ground Truth</th>
+                    </tr>
+                    <tr>
+                      <td class="tg-b406">Source / Reverb</td>
+                      <td class="tg-b406">Audio Sample</td>
+                      <td class="tg-b406">Source / Reverb</td>
+                      <td class="tg-b406">Audio Sample</td>
+                      <td class="tg-b406">Source / Reverb</td>
+                      <td class="tg-b406">Audio Sample</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="tg-uzvh" rowspan="2">#1 / 0%<br><span style="font-weight:400;font-style:italic;color:#00009B">Smooth Vocal / 15%</span><br><span style="font-weight:400;font-style:italic;color:#036400">Vocal Plate / 15%</span></td>
+                      <td class="tg-z630">s<sub>a</sub> / r<sub>1</sub></td>
+                      <td><audio controls style="width:180px;"><source src="audio/revconv_1_in_a2.wav" type="audio/wav"></audio></td>
+                      <td class="tg-tse4">s<sub>a</sub> / r<sub>2</sub></td>
+                      <td><audio controls style="width:180px;"><source src="audio/revconv_1_out_a2.wav" type="audio/wav"></audio></td>
+                      <td class="tg-2hic">s<sub>a</sub> / r<sub>2</sub></td>
+                      <td><audio controls style="width:180px;"><source src="audio/revconv_1_gt_a2.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-x6um">s<sub>b</sub> / r<sub>2</sub></td>
+                      <td><audio controls style="width:180px;"><source src="audio/revconv_1_in_b1.wav" type="audio/wav"></audio></td>
+                      <td class="tg-q5bq">s<sub>b</sub> / r<sub>1</sub></td>
+                      <td><audio controls style="width:180px;"><source src="audio/revconv_1_out_b1.wav" type="audio/wav"></audio></td>
+                      <td class="tg-0r0q">s<sub>b</sub> / r<sub>1</sub></td>
+                      <td><audio controls style="width:180px;"><source src="audio/revconv_1_gt_b1.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-9wq8" rowspan="2"><span style="font-weight:bold">#2 / 20%</span><br><span style="color:#00009B">Vocal Plate / 5%</span><br><span style="color:#036400">Vocal Hall / 25%</span></td>
+                      <td class="tg-ezck">s<sub>a</sub> / r<sub>1</sub></td>
+                      <td><audio controls style="width:180px;"><source src="audio/revconv_2_in_a2.wav" type="audio/wav"></audio></td>
+                      <td class="tg-2hic">s<sub>a</sub> / r<sub>2</sub></td>
+                      <td><audio controls style="width:180px;"><source src="audio/revconv_2_out_a2.wav" type="audio/wav"></audio></td>
+                      <td class="tg-2hic">s<sub>a</sub> / r<sub>2</sub></td>
+                      <td><audio controls style="width:180px;"><source src="audio/revconv_2_gt_a2.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-gpu6">s<sub>b</sub> / r<sub>2</sub></td>
+                      <td><audio controls style="width:180px;"><source src="audio/revconv_2_in_b1.wav" type="audio/wav"></audio></td>
+                      <td class="tg-0r0q">s<sub>b</sub> / r<sub>1</sub></td>
+                      <td><audio controls style="width:180px;"><source src="audio/revconv_2_out_b1.wav" type="audio/wav"></audio></td>
+                      <td class="tg-0r0q">s<sub>b</sub> / r<sub>1</sub></td>
+                      <td><audio controls style="width:180px;"><source src="audio/revconv_2_gt_b1.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-9wq8" rowspan="2"><span style="font-weight:bold">#3 / 40%</span><br><span style="color:#00009B">Vocal Hall / 5%</span><br><span style="color:#036400">Vocal Plate / 45%</span></td>
+                      <td class="tg-ezck">s<sub>a</sub> / r<sub>1</sub></td>
+                      <td><audio controls style="width:180px;"><source src="audio/revconv_3_in_a2.wav" type="audio/wav"></audio></td>
+                      <td class="tg-2hic">s<sub>a</sub> / r<sub>2</sub></td>
+                      <td><audio controls style="width:180px;"><source src="audio/revconv_3_out_a2.wav" type="audio/wav"></audio></td>
+                      <td class="tg-2hic">s<sub>a</sub> / r<sub>2</sub></td>
+                      <td><audio controls style="width:180px;"><source src="audio/revconv_3_gt_a2.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-gpu6">s<sub>b</sub> / r<sub>2</sub></td>
+                      <td><audio controls style="width:180px;"><source src="audio/revconv_3_in_b1.wav" type="audio/wav"></audio></td>
+                      <td class="tg-0r0q">s<sub>b</sub> / r<sub>1</sub></td>
+                      <td><audio controls style="width:180px;"><source src="audio/revconv_3_out_b1.wav" type="audio/wav"></audio></td>
+                      <td class="tg-0r0q">s<sub>b</sub> / r<sub>1</sub></td>
+                      <td><audio controls style="width:180px;"><source src="audio/revconv_3_gt_b1.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-9wq8" rowspan="2"><span style="font-weight:bold">#4 / 60%</span><br><span style="color:#00009B">Smooth Vocal / 5%</span><br><span style="color:#036400">Vocal Chamber / 65%</span></td>
+                      <td class="tg-ezck">s<sub>a</sub> / r<sub>1</sub></td>
+                      <td><audio controls style="width:180px;"><source src="audio/revconv_4_in_a2.wav" type="audio/wav"></audio></td>
+                      <td class="tg-2hic">s<sub>a</sub> / r<sub>2</sub></td>
+                      <td><audio controls style="width:180px;"><source src="audio/revconv_4_out_a2.wav" type="audio/wav"></audio></td>
+                      <td class="tg-2hic">s<sub>a</sub> / r<sub>2</sub></td>
+                      <td><audio controls style="width:180px;"><source src="audio/revconv_4_gt_a2.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-gpu6">s<sub>b</sub> / r<sub>2</sub></td>
+                      <td><audio controls style="width:180px;"><source src="audio/revconv_4_in_b1.wav" type="audio/wav"></audio></td>
+                      <td class="tg-0r0q">s<sub>b</sub> / r<sub>1</sub></td>
+                      <td><audio controls style="width:180px;"><source src="audio/revconv_4_out_b1.wav" type="audio/wav"></audio></td>
+                      <td class="tg-0r0q">s<sub>b</sub> / r<sub>1</sub></td>
+                      <td><audio controls style="width:180px;"><source src="audio/revconv_4_gt_b1.wav" type="audio/wav"></audio></td>
+                    </tr>
+                  </tbody>
+                  </table>
+                <!-- <table class="table">
+                  <tbody">
+                    <tr>
+                      <th>Song num.</th>
+                      <th>Singer 1</th>
+                      <th>Singer 2</th>
+                      <th>Singer 3</th>
+                      <th>Singer 4</th>
+                    </tr>
+                    <tr>
+                      <td class="align-middle">1</td>
+                      <td><audio controls style="width:180px;"><source src="audio/Multi_07_00.wav" type="audio/mpeg"></audio></td>
+                      <td><audio controls style="width:180px;"><source src="audio/Multi_07_01.wav" type="audio/mpeg"></audio></td>
+                      <td><audio controls style="width:180px;"><source src="audio/Multi_07_04.wav" type="audio/mpeg"></audio></td>
+                      <td><audio controls style="width:180px;"><source src="audio/Multi_07_05.wav" type="audio/mpeg"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="align-middle">2</td>
+                      <td><audio controls style="width:180px;"><source src="audio/Multi_06_00.wav" type="audio/mpeg"></audio></td>
+                      <td><audio controls style="width:180px;"><source src="audio/Multi_06_01.wav" type="audio/mpeg"></audio></td>
+                      <td><audio controls style="width:180px;"><source src="audio/Multi_06_04.wav" type="audio/mpeg"></audio></td>
+                      <td><audio controls style="width:180px;"><source src="audio/Multi_06_05.wav" type="audio/mpeg"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="align-middle">3</td>
+                      <td><audio controls style="width:180px;"><source src="audio/Multi_12_00.wav" type="audio/mpeg"></audio></td>
+                      <td><audio controls style="width:180px;"><source src="audio/Multi_12_01.wav" type="audio/mpeg"></audio></td>
+                      <td><audio controls style="width:180px;"><source src="audio/Multi_12_04.wav" type="audio/mpeg"></audio></td>
+                      <td><audio controls style="width:180px;"><source src="audio/Multi_12_05.wav" type="audio/mpeg"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="align-middle">4</td>
+                      <td><audio controls style="width:180px;"><source src="audio/Multi_25_00.wav" type="audio/mpeg"></audio></td>
+                      <td><audio controls style="width:180px;"><source src="audio/Multi_25_01.wav" type="audio/mpeg"></audio></td>
+                      <td><audio controls style="width:180px;"><source src="audio/Multi_25_04.wav" type="audio/mpeg"></audio></td>
+                      <td><audio controls style="width:180px;"><source src="audio/Multi_25_05.wav" type="audio/mpeg"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="align-middle">5</td>
+                      <td><audio controls style="width:180px;"><source src="audio/Multi_28_00.wav" type="audio/mpeg"></audio></td>
+                      <td><audio controls style="width:180px;"><source src="audio/Multi_28_01.wav" type="audio/mpeg"></audio></td>
+                      <td><audio controls style="width:180px;"><source src="audio/Multi_28_04.wav" type="audio/mpeg"></audio></td>
+                      <td><audio controls style="width:180px;"><source src="audio/Multi_28_05.wav" type="audio/mpeg"></audio></td>
+                    </tr>
+                  </tbody">
+                </table> -->
+              </div>
+
+              <div class="tab-pane fade center" id="v-pills-7_5" role="tabpanel" aria-labelledby="v-pills-7_5-tab">
+                <p><div style="text-align:justify"> Results of <b>De-reverberation</b> from the proposed model. All samples were generated from our validation dataset.
+                  <br> Four reverb presets were used in the validation dataset, where the details are as follows.
+                  <style type="text/css">
+                    .tg  {border-collapse:collapse;border-spacing:0;}
+                    .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+                      overflow:hidden;padding:10px 5px;word-break:normal;}
+                    .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+                      font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+                    .tg .tg-lhti{font-style:italic;text-align:center;vertical-align:middle}
+                    .tg .tg-wa1i{font-weight:bold;text-align:center;vertical-align:middle}
+                    .tg .tg-93gd{font-style:italic;text-align:center;vertical-align:middle}
+                    .tg .tg-5frq{font-style:italic;text-align:center;vertical-align:top}
+                    </style>
+                    <table class="tg center">
+                    <thead>
+                      <tr>
+                        <th class="tg-wa1i">Preset</th>
+                        <th class="tg-wa1i">Plug-in</th>
+                        <th class="tg-wa1i">Compamy</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="tg-93gd">Smooth Vocal</td>
+                        <td class="tg-93gd">H-Reverb</td>
+                        <td class="tg-93gd">Waves</td>
+                      </tr>
+                      <tr>
+                        <td class="tg-lhti">Vocal Plate</td>
+                        <td class="tg-lhti">Abbey Road Plates</td>
+                        <td class="tg-lhti">Waves</td>
+                      </tr>
+                      <tr>
+                        <td class="tg-93gd">Vocal Hall</td>
+                        <td class="tg-93gd">ChromaVerb</td>
+                        <td class="tg-93gd">Logic Pro-X</td>
+                      </tr>
+                      <tr>
+                        <td class="tg-lhti">Vocal Chamber</td>
+                        <td class="tg-5frq">ChromaVerb</td>
+                        <td class="tg-5frq">Logic Pro-X</td>
+                      </tr>
+                    </tbody>
+                    </table>
+                  <br> <p style="color:#93a1a1;"><i>Please use devices such as speakers, headphones, and earphones in a quiet environment to analyze the sound source. </i></p></div></p>
+                <style type="text/css">
+                  .tg  {border-collapse:collapse;border-color:#93a1a1;border-spacing:0;}
+                  .tg td{background-color:#fdf6e3;border-color:#93a1a1;border-style:solid;border-width:0px;color:#002b36;
+                    font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+                  .tg th{background-color:#657b83;border-color:#93a1a1;border-style:solid;border-width:0px;color:#fdf6e3;
+                    font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+                  .tg .tg-9wq8{border-color:inherit;text-align:center;vertical-align:middle}
+                  .tg .tg-9wq9{border-color:inherit;font-weight:bold;text-align:center;vertical-align:middle;padding:30px}
+                  .tg .tg-nnwx{border-color:inherit;font-size:18px;font-weight:bold;text-align:center;vertical-align:middle}
+                  .tg .tg-vrnj{border-color:inherit;font-style:italic;text-align:center;vertical-align:middle}
+                  </style>
+                  <table class="tg center">
+                  <thead>
+                    <tr>
+                      <th class="tg-9wq8">&gamma;</th>
+                      <th class="tg-nnwx">Reverb</th>
+                      <th class="tg-nnwx">Model Input</th>
+                      <th class="tg-nnwx">Model Output</th>
+                      <th class="tg-nnwx">Ground Truth</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="tg-9wq9" rowspan="2">10%</td>
+                      <td class="tg-vrnj">Smooth Vocal</td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_1_in.wav" type="audio/wav"></audio></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_1_out.wav" type="audio/wav"></audio></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_1_gt.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-vrnj">Vocal Plate</td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_2_in.wav" type="audio/wav"></audio></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_2_out.wav" type="audio/wav"></audio></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_2_gt.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-9wq9" rowspan="2">20%</td>
+                      <td class="tg-vrnj">Vocal Hall</td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_3_in.wav" type="audio/wav"></audio></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_3_out.wav" type="audio/wav"></audio></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_3_gt.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-vrnj"><span style="font-weight:400;font-style:italic">Vocal Chamber</span></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_4_in.wav" type="audio/wav"></audio></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_4_out.wav" type="audio/wav"></audio></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_4_gt.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-9wq9" rowspan="2">30%</td>
+                      <td class="tg-vrnj">Smooth Vocal</td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_5_in.wav" type="audio/wav"></audio></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_5_out.wav" type="audio/wav"></audio></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_5_gt.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-vrnj"><span style="font-weight:400;font-style:italic">Vocal Hall</span></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_6_in.wav" type="audio/wav"></audio></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_6_out.wav" type="audio/wav"></audio></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_6_gt.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-9wq9" rowspan="2">40%</td>
+                      <td class="tg-vrnj">Vocal Chamber</td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_7_in.wav" type="audio/wav"></audio></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_7_out.wav" type="audio/wav"></audio></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_7_gt.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-vrnj"><span style="font-weight:400;font-style:italic">Vocal Plate</span></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_8_in.wav" type="audio/wav"></audio></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_8_out.wav" type="audio/wav"></audio></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_8_gt.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-9wq9" rowspan="2">50%</td>
+                      <td class="tg-vrnj">Vocal Plate</td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_9_in.wav" type="audio/wav"></audio></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_9_out.wav" type="audio/wav"></audio></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_9_gt.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-vrnj"><span style="font-weight:400;font-style:italic">Vocal Chamber</span></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_10_in.wav" type="audio/wav"></audio></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_10_out.wav" type="audio/wav"></audio></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_10_gt.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-9wq9" rowspan="2">60%</td>
+                      <td class="tg-vrnj">Smooth Vocal</td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_11_in.wav" type="audio/wav"></audio></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_11_out.wav" type="audio/wav"></audio></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_11_gt.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-vrnj"><span style="font-weight:400;font-style:italic">Vocal Hall</span></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_12_in.wav" type="audio/wav"></audio></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_12_out.wav" type="audio/wav"></audio></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_12_gt.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-9wq9" rowspan="2">70%</td>
+                      <td class="tg-vrnj">Vocal Plate</td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_13_in.wav" type="audio/wav"></audio></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_13_out.wav" type="audio/wav"></audio></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_13_gt.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-vrnj"><span style="font-weight:400;font-style:italic">Vocal Chamber</span></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_14_in.wav" type="audio/wav"></audio></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_14_out.wav" type="audio/wav"></audio></td>
+                      <td class="tg-9wq8"><audio controls style="width:230px;"><source src="audio/derev_14_gt.wav" type="audio/wav"></audio></td>
+                    </tr>
+                  </tbody>
+                  </table>
+              </div>
+
+
+              <div class="tab-pane fade" id="v-pills-12_5" role="tabpanel" aria-labelledby="v-pills-12_5-tab">
+                <p><div style="text-align:justify"> <b>Reverb Conversion</b> with pop songs and raw tracks. Reference track (a pop song) is de-reverberated, while the raw track is added with the reverb factor of the reference track. <br> <p style="color:#93a1a1;"><i>Please use devices such as speakers, headphones, and earphones in a quiet environment to analyze the sound source. </i></p></div></p>
+                <br>
+                <style type="text/css">
+                  .tg  {border-collapse:collapse;border-color:#93a1a1;border-spacing:0;}
+                  .tg td{background-color:#fdf6e3;border-color:#93a1a1;border-style:solid;border-width:0px;color:#002b36;
+                    font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+                  .tg th{background-color:#657b83;border-color:#93a1a1;border-style:solid;border-width:0px;color:#fdf6e3;
+                    font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+                  .tg .tg-lhti{font-style:italic;text-align:center;vertical-align:middle}
+                  .tg .tg-baqh{color:#9b9b9b;text-align:center;vertical-align:middle}
+                  .tg .tg-r28n{font-size:18px;text-align:center;vertical-align:middle}
+                  .tg .tg-nrix{text-align:center;vertical-align:middle}
+                  </style>
+                  <table class="tg center">
+                  <thead>
+                    <tr>
+                      <th class="tg-r28n">Pop Song (ref.)</th>
+                      <th class="tg-r28n"></th>
+                      <th class="tg-r28n">Model Input</th>
+                      <th class="tg-r28n">Model Output</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="tg-lhti" rowspan="2">"The Scientist" by Coldplay</td>
+                      <td class="tg-baqh">ref.</td>
+                      <td class="tg-nrix"><audio controls style="width:230px;"><source src="audio/pop/pop_1_in_a2.wav" type="audio/wav"></audio></td>
+                      <td class="tg-nrix"><audio controls style="width:230px;"><source src="audio/pop/pop_1_out_a2.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-baqh">raw</td>
+                      <td class="tg-nrix"><audio controls style="width:230px;"><source src="audio/pop/pop_1_in_b1.wav" type="audio/wav"></audio></td>
+                      <td class="tg-nrix"><audio controls style="width:230px;"><source src="audio/pop/pop_1_out_b1.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-lhti" rowspan="2">"Yellow" by Coldplay</td>
+                      <td class="tg-baqh">ref.</td>
+                      <td class="tg-nrix"><audio controls style="width:230px;"><source src="audio/pop/pop_2_in_a2.wav" type="audio/wav"></audio></td>
+                      <td class="tg-nrix"><audio controls style="width:230px;"><source src="audio/pop/pop_2_out_a2.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-baqh">raw</td>
+                      <td class="tg-nrix"><audio controls style="width:230px;"><source src="audio/pop/pop_2_in_b1.wav" type="audio/wav"></audio></td>
+                      <td class="tg-nrix"><audio controls style="width:230px;"><source src="audio/pop/pop_2_out_b1.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-lhti" rowspan="2">"Attention" by Charlie Puth</td>
+                      <td class="tg-baqh">ref.</td>
+                      <td class="tg-nrix"><audio controls style="width:230px;"><source src="audio/pop/pop_3_in_a2.wav" type="audio/wav"></audio></td>
+                      <td class="tg-nrix"><audio controls style="width:230px;"><source src="audio/pop/pop_3_out_a2.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-baqh">raw</td>
+                      <td class="tg-nrix"><audio controls style="width:230px;"><source src="audio/pop/pop_3_in_b1.wav" type="audio/wav"></audio></td>
+                      <td class="tg-nrix"><audio controls style="width:230px;"><source src="audio/pop/pop_3_out_b1.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-lhti" rowspan="2">"Attention" by Charlie Puth</td>
+                      <td class="tg-baqh">ref.</td>
+                      <td class="tg-nrix"><audio controls style="width:230px;"><source src="audio/pop/pop_4_in_a2.wav" type="audio/wav"></audio></td>
+                      <td class="tg-nrix"><audio controls style="width:230px;"><source src="audio/pop/pop_4_out_a2.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-baqh">raw</td>
+                      <td class="tg-nrix"><audio controls style="width:230px;"><source src="audio/pop/pop_4_in_b1.wav" type="audio/wav"></audio></td>
+                      <td class="tg-nrix"><audio controls style="width:230px;"><source src="audio/pop/pop_4_out_b1.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-lhti" rowspan="2">"Greedy" by Ariana Grande</td>
+                      <td class="tg-baqh">ref.</td>
+                      <td class="tg-nrix"><audio controls style="width:230px;"><source src="audio/pop/pop_5_in_a2.wav" type="audio/wav"></audio></td>
+                      <td class="tg-nrix"><audio controls style="width:230px;"><source src="audio/pop/pop_5_out_a2.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-baqh">raw</td>
+                      <td class="tg-nrix"><audio controls style="width:230px;"><source src="audio/pop/pop_5_in_b1.wav" type="audio/wav"></audio></td>
+                      <td class="tg-nrix"><audio controls style="width:230px;"><source src="audio/pop/pop_5_out_b1.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-lhti" rowspan="2">"Greedy" by Ariana Grande</td>
+                      <td class="tg-baqh">ref.</td>
+                      <td class="tg-nrix"><audio controls style="width:230px;"><source src="audio/pop/pop_6_in_a2.wav" type="audio/wav"></audio></td>
+                      <td class="tg-nrix"><audio controls style="width:230px;"><source src="audio/pop/pop_6_out_a2.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                      <td class="tg-baqh">raw</td>
+                      <td class="tg-nrix"><audio controls style="width:230px;"><source src="audio/pop/pop_6_in_b1.wav" type="audio/wav"></audio></td>
+                      <td class="tg-nrix"><audio controls style="width:230px;"><source src="audio/pop/pop_6_out_b1.wav" type="audio/wav"></audio></td>
+                    </tr>
+                  </tbody>
+                  </table>
+              </div>
+
+              <!-- <p class="text-muted">The audio samples of other comparable algorithms are available in the links below.<br>
+              We encourage listeners to use headphone for more precise comparison with other algorithms.</p>
+              <p>
+                <a href="http://veu.talp.cat/segan/" style="color:blue">SEGAN</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="http://www.jordipons.me/apps/speech-denoising-wavenet/" style="color:blue">Wavenet Denoising</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="https://ccrma.stanford.edu/%7Efrancois/SpeechDenoisingWithDeepFeatureLosses/" style="color:blue">Deep Feature Loss</a> </p> -->
+            </div>
+            <div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Reference
+    <section id="reference">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <h2 class="section-heading text-uppercase text-center">References</h2>
+            <br>
+            <p class="text-muted">[1] Chiheb Trabelsi, Olexa Bilaniuk, Ying Zhang, Dmitriy Serdyuk, Sandeep Subramanian, Joao Felipe Santos, Soroush Mehri, Negar Rostamzadeh, Yoshua Bengio, and Christopher J Pal. Deep complex networks. arXiv preprint arXiv:1705.09792, 2017.</p>
+            <p class="text-muted">[2] Pascal Scalart et al. Speech enhancement based on a priori signal to noise estimation. In Acoustics, Speech, and Signal Processing, 1996. ICASSP-96. Conference Proceedings., 1996 IEEE International Conference on, volume 2, pp. 629–632. IEEE, 1996.</p>
+            <p class="text-muted">[3] Santiago Pascual, Antonio Bonafonte, and Joan Serra. Segan: Speech enhancement generative adversarial network. arXiv preprint arXiv:1703.09452, 2017.</p>
+            <p class="text-muted">[4] Dario Rethage, Jordi Pons, and Xavier Serra. A wavenet for speech denoising. arXiv preprint arXiv:1706.07162, 2017.</p>
+            <p class="text-muted">[5] Meet H Soni, Neil Shah, and Hemant A Patil. Time-frequency masking-based speech enhancement using generative adversarial network. In IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 2018.</p>
+            <p class="text-muted">[6] Francois G Germain, Qifeng Chen, and Vladlen Koltun. Speech denoising with deep feature losses. arXiv preprint arXiv:1806.10522, 2018.</p>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/agency.min.js"></script>
+
+  </body>
+
+</html>
