@@ -72,13 +72,13 @@
           <!-- <div class="intro-lead-in">OF MIXED VOCAL TRACKS USING AN END-TO-END CONVOLUTIONAL DEEP NEURAL NETWORK</div> -->
           <!-- <div class="intro-lead-in">of Mixed Vocal Tracks Using an End-to-end Convolutional Deep Neural Network</div> -->
         
-          <p><div style="position: absolute; bottom:230px; right:30px; text-align:right;"> <br>Juheon Lee, Music & Audio Research Group (MARG), Seould National University<br>Junghyun Koo, Music & Audio Research Group (MARG), Seould National University </div></p>
+          <p><div style="position:center;"> <br>Juheon Lee, Music & Audio Research Group (MARG), Seould National University<br>Junghyun Koo, Music & Audio Research Group (MARG), Seould National University </div></p>
           </div>
       </div>
     </header>
     
     <!-- Notification -->
-    <p><div style="text-align:justify"> <b>Note.</b> This project is a final project conducted in the class <i>"Computer and VLSI Special Lecture (Understanding AI Technology and Commercialization Based on SKT's NUGU)"</i> at Seoul National University </div></p>
+    <!-- <p><div style="text-align:justify"> <b>Note.</b> This project is a final project conducted in the class <i>"Computer and VLSI Special Lecture (Understanding AI Technology and Commercialization Based on SKT's NUGU)"</i> at Seoul National University </div></p> -->
 
     <!-- Abstract -->
     <section id="abstract">
@@ -87,6 +87,8 @@
           <div class="col-lg-12 text-center">
             <h2 class="section-heading text-uppercase">ABSTRACT</h2>
             <p><div style="text-align:justify"> In this study, we propose FewsClon, a voice cloning system that can replicate a specific user’s timbre with only a small amount of speech data collected in a reverb environment. FewsClon is composed of 1) dereverb module and 2) cloning module. The dereverb module is a U-Net-based network that removes the reverb component included in the input signal, and is trained in a way that disentangles a given input’s source and its reverb components at the latent dimension.  The cloning module operates by transferring pre-trained multi-speaker TTS to small volume of speech data, and at this time, it is designed in a structure that independently model input pitch and text in order to learn timbre effectively from less data. In the experimental results, we showed that significant performance degradation occurs when signals collected in a reverb environment are used for voice cloning, and that this performance degradation is reduced when preprocessing with a network that effectively performs dereverberation tasks in various environments. In addition, we confirmed that the voice cloning module could successfully convey the speaker’s timbre with only 20 sentences (∼2 min) of training data through listening evaluation.</div></p>
+            <p><div style="text-align:justify"> <br><b>Note.</b> This project is a final project conducted in the class <i>"Computer and VLSI Special Lecture (Understanding AI Technology and Commercialization Based on SKT's NUGU)"</i> at Seoul National University </div></p>
+
             <!-- <img src="img/idea.png" style="max-width: 80%; height: auto;" /> -->
           </div>
         </div>
@@ -199,39 +201,39 @@
                     <tbody>
                       <tr>
                         <td class="ti-crli" rowspan="3">A</td>
-                        <td class="ti-9wq8" rowspan="3"><audio controls style="width:180px;"><source src="audio/cloning/A_target.wav" type="audio/wav"></audio></td>
-                        <td class="ti-nrix" rowspan="3"><audio controls style="width:180px;"><source src="audio/cloning/A_content.wav" type="audio/wav"></audio></td>
+                        <td class="ti-9wq8" rowspan="3"><audio controls style="width:230px;"><source src="audio/cloning/A_target.wav" type="audio/wav"></audio></td>
+                        <td class="ti-nrix" rowspan="3"><audio controls style="width:230px;"><source src="audio/cloning/A_content.wav" type="audio/wav"></audio></td>
                         <td class="ti-jqws">0.2</td>
-                        <td class="ti-9wq8"><audio controls style="width:180px;"><source src="audio/cloning/A_R0.2.wav" type="audio/wav"></audio></td>
-                        <td class="ti-9wq8"><audio controls style="width:180px;"><source src="audio/cloning/A_DR0.2.wav" type="audio/wav"></audio></td>
+                        <td class="ti-9wq8"><audio controls style="width:230px;"><source src="audio/cloning/A_R0.2.wav" type="audio/wav"></audio></td>
+                        <td class="ti-9wq8"><audio controls style="width:230px;"><source src="audio/cloning/A_DR0.2.wav" type="audio/wav"></audio></td>
                       </tr>
                       <tr>
                         <td class="ti-jqws">0.4</td>
-                        <td class="ti-9wq8"><audio controls style="width:180px;"><source src="audio/cloning/A_R0.4.wav" type="audio/wav"></audio></td>
-                        <td class="ti-9wq8"><audio controls style="width:180px;"><source src="audio/cloning/A_DR0.4.wav" type="audio/wav"></audio></td>
+                        <td class="ti-9wq8"><audio controls style="width:230px;"><source src="audio/cloning/A_R0.4.wav" type="audio/wav"></audio></td>
+                        <td class="ti-9wq8"><audio controls style="width:230px;"><source src="audio/cloning/A_DR0.4.wav" type="audio/wav"></audio></td>
                       </tr>
                       <tr>
                         <td class="ti-jqws">0.6</td>
-                        <td class="ti-9wq8"><audio controls style="width:180px;"><source src="audio/cloning/A_R0.6.wav" type="audio/wav"></audio></td>
-                        <td class="ti-9wq8"><audio controls style="width:180px;"><source src="audio/cloning/A_DR0.6.wav" type="audio/wav"></audio></td>
+                        <td class="ti-9wq8"><audio controls style="width:230px;"><source src="audio/cloning/A_R0.6.wav" type="audio/wav"></audio></td>
+                        <td class="ti-9wq8"><audio controls style="width:230px;"><source src="audio/cloning/A_DR0.6.wav" type="audio/wav"></audio></td>
                       </tr>
                       <tr>
                         <td class="ti-td2w" rowspan="3">B</td>
-                        <td class="ti-9wq8" rowspan="3"><audio controls style="width:180px;"><source src="audio/cloning/B_target.wav" type="audio/wav"></audio></td>
-                        <td class="ti-nrix" rowspan="3"><audio controls style="width:180px;"><source src="audio/cloning/B_content.wav" type="audio/wav"></audio></td>
+                        <td class="ti-9wq8" rowspan="3"><audio controls style="width:230px;"><source src="audio/cloning/B_target.wav" type="audio/wav"></audio></td>
+                        <td class="ti-nrix" rowspan="3"><audio controls style="width:230px;"><source src="audio/cloning/B_content.wav" type="audio/wav"></audio></td>
                         <td class="ti-jqws">0.2</td>
-                        <td class="ti-9wq8"><audio controls style="width:180px;"><source src="audio/cloning/B_R0.2.wav" type="audio/wav"></audio></td>
-                        <td class="ti-9wq8"><audio controls style="width:180px;"><source src="audio/cloning/B_DR0.2.wav" type="audio/wav"></audio></td>
+                        <td class="ti-9wq8"><audio controls style="width:230px;"><source src="audio/cloning/B_R0.2.wav" type="audio/wav"></audio></td>
+                        <td class="ti-9wq8"><audio controls style="width:230px;"><source src="audio/cloning/B_DR0.2.wav" type="audio/wav"></audio></td>
                       </tr>
                       <tr>
                         <td class="ti-jqws">0.4</td>
-                        <td class="ti-9wq8"><audio controls style="width:180px;"><source src="audio/cloning/B_R0.4.wav" type="audio/wav"></audio></td>
-                        <td class="ti-9wq8"><audio controls style="width:180px;"><source src="audio/cloning/B_DR0.4.wav" type="audio/wav"></audio></td>
+                        <td class="ti-9wq8"><audio controls style="width:230px;"><source src="audio/cloning/B_R0.4.wav" type="audio/wav"></audio></td>
+                        <td class="ti-9wq8"><audio controls style="width:230px;"><source src="audio/cloning/B_DR0.4.wav" type="audio/wav"></audio></td>
                       </tr>
                       <tr>
                         <td class="ti-jqws">0.6</td>
-                        <td class="ti-9wq8"><audio controls style="width:180px;"><source src="audio/cloning/B_R0.6.wav" type="audio/wav"></audio></td>
-                        <td class="ti-9wq8"><audio controls style="width:180px;"><source src="audio/cloning/B_DR0.6.wav" type="audio/wav"></audio></td>
+                        <td class="ti-9wq8"><audio controls style="width:230px;"><source src="audio/cloning/B_R0.6.wav" type="audio/wav"></audio></td>
+                        <td class="ti-9wq8"><audio controls style="width:230px;"><source src="audio/cloning/B_DR0.6.wav" type="audio/wav"></audio></td>
                       </tr>
                     </tbody>
                     </table>
@@ -267,66 +269,66 @@
                     <tr>
                       <td class="tl-2bvl" rowspan="5">A</td>
                       <td class="tl-n9zd">0.2</td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleA/200ms/1_0000_reverbed.wav" type="audio/wav"></audio></td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleA/200ms/1_0000_enhanced_gtphase.wav" type="audio/wav"></audio></td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleA/200ms/1_0000_enhanced_griff_hifi_gen.wav" type="audio/wav"></audio></td>
-                      <td class="tl-nrix" rowspan="5"><audio controls style="width:180px;"><source src="audio/dereverb/sampleA/1_0000_raw.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleA/200ms/1_0000_reverbed.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleA/200ms/1_0000_enhanced_gtphase.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleA/200ms/1_0000_enhanced_griff_hifi_gen.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix" rowspan="5"><audio controls style="width:230px;"><source src="audio/dereverb/sampleA/1_0000_raw.wav" type="audio/wav"></audio></td>
                     </tr>
                     <tr>
                       <td class="tl-n9zd">0.3</td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleA/300ms/1_0000_reverbed.wav" type="audio/wav"></audio></td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleA/300ms/1_0000_enhanced_gtphase.wav" type="audio/wav"></audio></td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleA/300ms/1_0000_enhanced_griff_hifi_gen.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleA/300ms/1_0000_reverbed.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleA/300ms/1_0000_enhanced_gtphase.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleA/300ms/1_0000_enhanced_griff_hifi_gen.wav" type="audio/wav"></audio></td>
                     </tr>
                     <tr>
                       <td class="tl-n9zd">0.4</td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleA/400ms/1_0000_reverbed.wav" type="audio/wav"></audio></td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleA/400ms/1_0000_enhanced_gtphase.wav" type="audio/wav"></audio></td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleA/400ms/1_0000_enhanced_griff_hifi_gen.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleA/400ms/1_0000_reverbed.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleA/400ms/1_0000_enhanced_gtphase.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleA/400ms/1_0000_enhanced_griff_hifi_gen.wav" type="audio/wav"></audio></td>
                     </tr>
                     <tr>
                       <td class="tl-n9zd">0.5</td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleA/500ms/1_0000_reverbed.wav" type="audio/wav"></audio></td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleA/500ms/1_0000_enhanced_gtphase.wav" type="audio/wav"></audio></td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleA/500ms/1_0000_enhanced_griff_hifi_gen.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleA/500ms/1_0000_reverbed.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleA/500ms/1_0000_enhanced_gtphase.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleA/500ms/1_0000_enhanced_griff_hifi_gen.wav" type="audio/wav"></audio></td>
                     </tr>
                     <tr>
                       <td class="tl-n9zd">0.6</td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleA/600ms/1_0000_reverbed.wav" type="audio/wav"></audio></td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleA/600ms/1_0000_enhanced_gtphase.wav" type="audio/wav"></audio></td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleA/600ms/1_0000_enhanced_griff_hifi_gen.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleA/600ms/1_0000_reverbed.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleA/600ms/1_0000_enhanced_gtphase.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleA/600ms/1_0000_enhanced_griff_hifi_gen.wav" type="audio/wav"></audio></td>
                     </tr>
                     <tr>
                       <td class="tl-2bvl" rowspan="5">B</td>
                       <td class="tl-n9zd">0.2</td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleB/200ms/juheon_dry_reverbed.wav" type="audio/wav"></audio></td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleB/200ms/juheon_dry_enhanced_gtphase.wav" type="audio/wav"></audio></td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleB/200ms/juheon_dry_enhanced_griff_hifi_gen.wav" type="audio/wav"></audio></td>
-                      <td class="tl-nrix" rowspan="5"><audio controls style="width:180px;"><source src="audio/dereverb/sampleB/juheon_dry_raw.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleB/200ms/juheon_dry_reverbed.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleB/200ms/juheon_dry_enhanced_gtphase.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleB/200ms/juheon_dry_enhanced_griff_hifi_gen.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix" rowspan="5"><audio controls style="width:230px;"><source src="audio/dereverb/sampleB/juheon_dry_raw.wav" type="audio/wav"></audio></td>
                     </tr>
                     <tr>
                       <td class="tl-n9zd">0.3</td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleB/300ms/juheon_dry_reverbed.wav" type="audio/wav"></audio></td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleB/300ms/juheon_dry_enhanced_gtphase.wav" type="audio/wav"></audio></td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleB/300ms/juheon_dry_enhanced_griff_hifi_gen.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleB/300ms/juheon_dry_reverbed.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleB/300ms/juheon_dry_enhanced_gtphase.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleB/300ms/juheon_dry_enhanced_griff_hifi_gen.wav" type="audio/wav"></audio></td>
                     </tr>
                     <tr>
                       <td class="tl-n9zd">0.4</td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleB/400ms/juheon_dry_reverbed.wav" type="audio/wav"></audio></td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleB/400ms/juheon_dry_enhanced_gtphase.wav" type="audio/wav"></audio></td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleB/400ms/juheon_dry_enhanced_griff_hifi_gen.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleB/400ms/juheon_dry_reverbed.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleB/400ms/juheon_dry_enhanced_gtphase.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleB/400ms/juheon_dry_enhanced_griff_hifi_gen.wav" type="audio/wav"></audio></td>
                     </tr>
                     <tr>
                       <td class="tl-n9zd">0.5</td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleB/500ms/juheon_dry_reverbed.wav" type="audio/wav"></audio></td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleB/500ms/juheon_dry_enhanced_gtphase.wav" type="audio/wav"></audio></td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleB/500ms/juheon_dry_enhanced_griff_hifi_gen.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleB/500ms/juheon_dry_reverbed.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleB/500ms/juheon_dry_enhanced_gtphase.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleB/500ms/juheon_dry_enhanced_griff_hifi_gen.wav" type="audio/wav"></audio></td>
                     </tr>
                     <tr>
                       <td class="tl-n9zd">0.6</td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleB/600ms/juheon_dry_reverbed.wav" type="audio/wav"></audio></td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleB/600ms/juheon_dry_enhanced_gtphase.wav" type="audio/wav"></audio></td>
-                      <td class="tl-nrix"><audio controls style="width:180px;"><source src="audio/dereverb/sampleB/600ms/juheon_dry_enhanced_griff_hifi_gen.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleB/600ms/juheon_dry_reverbed.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleB/600ms/juheon_dry_enhanced_gtphase.wav" type="audio/wav"></audio></td>
+                      <td class="tl-nrix"><audio controls style="width:230px;"><source src="audio/dereverb/sampleB/600ms/juheon_dry_enhanced_griff_hifi_gen.wav" type="audio/wav"></audio></td>
                     </tr>
                   </tbody>
                   </table>
